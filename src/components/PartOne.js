@@ -20,7 +20,7 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
     var array = [];
     const n_repeat = Math.ceil(settings.trials / colors.length);
     for(var i=0;i<n_repeat;i++){
-      const copied = colors;
+      let copied = colors.slice();
       shuffle(copied);
       array = array.concat(copied);
     }

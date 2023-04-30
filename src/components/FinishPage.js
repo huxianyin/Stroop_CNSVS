@@ -36,14 +36,16 @@ function FinishPage(props) {
 
   }
 
-  const calc_part23_metrics=(data,part)=>{
+  const calc_part23_metrics=(data)=>{
     var complex_rt = 0;
     var cnt = 0;
     var n_target = 0;
     var n_foil = 0;
     var err_ignore = 0;
     var err_res = 0;
+    var part;
     data.forEach(d => {
+      part = d.part;
       if(d.target) n_target+=1;
       else n_foil+=1;
       if(d.correct){
@@ -65,10 +67,11 @@ function FinishPage(props) {
     }
     err_ignore = 100*err_ignore/n_target;
     err_res = 100*err_res/n_foil;
-    if(part=="2"){
+    //console.log(part,n_target,n_foil);
+    if(part==2){
       setMetrics(metrics => {return {...metrics,"complex_rt_2":complex_rt,"err_ignore_2":err_ignore,"err_res_2":err_res}});
     }
-   else if(part=="3"){
+   else if(part==3){
     setMetrics(metrics => {return {...metrics,"complex_rt_3":complex_rt,"err_ignore_3":err_ignore,"err_res_3":err_res}});
    }
    
@@ -77,10 +80,10 @@ function FinishPage(props) {
 
   const calc_scores = ()=>{
     const n = props.settings.trials;
-    calc_part23_metrics(props.data.slice(n,2*n),"2");
-    calc_part23_metrics(props.data.slice(2*n,3*n),"3");
     calc_part1_metrics(props.data.slice(0,n));
-    console.log(metrics);
+    calc_part23_metrics(props.data.slice(n,2*n));
+    calc_part23_metrics(props.data.slice(2*n,3*n));
+    
   }
 
   useEffect(()=>{
@@ -102,21 +105,21 @@ function FinishPage(props) {
 
               <tr>
                 <th>1</th>
-                <th>{metrics["simple_rt"]?metrics["simple_rt"].toFixed(2):"反応なし"}</th>
+                <th>{metrics["simple_rt"]&&metrics["simple_rt"]>0?metrics["simple_rt"].toFixed(2):"反応なし"}</th>
                 <th>/</th>
                 <th>/</th>
               </tr>
 
               <tr>
                 <th>2</th>
-                <th>{metrics["complex_rt_2"]?metrics["complex_rt_2"].toFixed(2):"反応なし"}</th>
+                <th>{metrics["complex_rt_2"]&&metrics["complex_rt_2"]>0?metrics["complex_rt_2"].toFixed(2):"反応なし"}</th>
                 <th>{metrics["err_ignore_2"]?metrics["err_ignore_2"].toFixed(2):"0"}</th>
                 <th>{metrics["err_res_2"]?metrics["err_res_2"].toFixed(2):"0"}</th>
               </tr>
 
               <tr>
                 <th>3</th>
-                <th>{metrics["complex_rt_3"]?metrics["complex_rt_3"].toFixed(2):"反応なし"}</th>
+                <th>{metrics["complex_rt_3"]&&metrics["complex_rt_3"]>0?metrics["complex_rt_3"].toFixed(2):"反応なし"}</th>
                 <th>{metrics["err_ignore_3"]?metrics["err_ignore_3"].toFixed(2):"0"}</th>
                 <th>{metrics["err_res_3"]?metrics["err_res_3"].toFixed(2):"0"}</th>
               </tr>

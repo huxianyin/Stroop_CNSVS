@@ -15,41 +15,58 @@ function PartTwo({colors,settings,onFinished,shuffle,UpdateResponseData}) {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
   const [rt, setRT] = useState(-1);
 
-
   const GenerateStimuliArray = ()=>{
     var array = [];
     const n_repeat = Math.ceil(settings.trials / colors.length);
     for(var i=0;i<n_repeat;i++){
-      const copied = colors;
+      let copied = [...colors];
       shuffle(copied);
       array = array.concat(copied);
     }
-    setStimuliArray(array.slice(0,settings.trials));
+    array = array.slice(0,settings.trials);
+    
+    var incongruent_indices = [...Array(array.length).keys()];
+    shuffle(incongruent_indices);
+    incongruent_indices = incongruent_indices.slice(0,Math.ceil(incongruent_indices.length/2));  
+    
+    var new_array = [];
+
+    for(var i=0;i<array.length;i++){
+      var s={};
+      s["name"] = array[i]["name"];
+      if(incongruent_indices.includes(i)){
+        s["color"] = pick_another_color(s["name"]);
+      } 
+      else{
+        s["color"] = array[i]["color"];
+      }
+      new_array.push(s);
+    }
+    setStimuliArray(new_array);
+
+    // new_array.forEach((a,idx)=>{
+    //   console.log(idx,a.name,settings["color-name-dict"][a.color], settings["color-name-dict"][a.color]==a.name);
+    // })
+    
   }
 
   const pick_another_color = (name)=>{
-    let tmpset = colors.slice();
+    let tmpset = [...colors];
     tmpset = tmpset.filter(item => item.name!=name);
     const rand = Math.floor(Math.random()*tmpset.length);
+    //console.log(name,tmpset,rand,tmpset[rand].color);
     return tmpset[rand].color;
     
   }
 
   const PresentStimuli = async()=>{
-    var incongruent_indices = [...Array(stimuliArray.length).keys()];
-    shuffle(incongruent_indices);
-    incongruent_indices = incongruent_indices.slice(0,Math.ceil(incongruent_indices.length/2));  
     var cnt = 0;
     while(cnt < settings.trials){
       //set start trail state variable
       setTrialStartTime(Date.now());
       setRT(-1);
       //present stimuli
-      var s = stimuliArray[cnt];
-      if(incongruent_indices.includes(cnt)){
-        s["color"] = pick_another_color(s["name"]);
-      }
-      setStimuli(s);
+      setStimuli(stimuliArray[cnt]);
       await sleep(settings.interval);
 
       //update record data
