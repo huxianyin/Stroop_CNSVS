@@ -2,6 +2,7 @@
 import { useState,useEffect } from 'react';
 import '../css/Part.css';
 import '../css/btn.css'
+const part = 3;
 
 function PartThree({colors,settings,onFinished,shuffle,UpdateResponseData}) {
   const [started, setStarted] = useState(false);

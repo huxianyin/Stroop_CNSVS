@@ -17,7 +17,8 @@ const settings = {
   "interval" : 1000,
   "retention_interval":500,
   "trials":2,
-  "dummy":{"name":"+","color":"black"}
+  "dummy":{"name":"+","color":"black"},
+  "color-name-dict":{"#ff4b00":"赤", "#005aff":"青", "#fff100":"黄", "#03af7a":"緑"}
 }
 
 function App() {
@@ -51,25 +52,26 @@ function App() {
       return (<PartOne colors={colors} settings={settings} 
       onFinished={()=>setPartOneFinished(true)} 
       shuffle={shuffle}
-      onUpdate={UpdateResponseData}>
+      UpdateResponseData={UpdateResponseData}>
       </PartOne>);
     }
     else if(partOneFinished && !partTwoFinished){
+      console.log(responseData);
       return (<PartTwo colors={colors} settings={settings} 
       onFinished={()=>setPartTwoFinished(true)} 
       shuffle={shuffle}
-      onUpdate={UpdateResponseData}>
+      UpdateResponseData={UpdateResponseData}>
       </PartTwo>);
     }
     else if(partOneFinished && partTwoFinished && !partThreeFinished){
       return (<PartThree colors={colors} settings={settings} 
       onFinished={()=>setPartThreeFinished(true)} 
       shuffle={shuffle}
-      onUpdate={UpdateResponseData}>
+      UpdateResponseData={UpdateResponseData}>
       </PartThree>);
     }
     else{
-      return (<FinishPage></FinishPage>);
+      return (<FinishPage data={responseData}></FinishPage>);
     }
   }
 

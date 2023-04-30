@@ -1,6 +1,7 @@
 
 
-function FinishPage() {
+
+function FinishPage(data) {
   const onClose = () => {
     window.opener = null;
     window.open('', '_self');
