@@ -1,0 +1,74 @@
+.Instruction button {
+    width: 80vw;
+    border-color: black;
+    font-size: 5vh;
+    color: black;
+    margin-top: 2vh;
+    align-self: flex-end;
+    margin-top: 10vh;
+}
+
+.Task .Stimuli {
+    font-size: 20vh;
+    border: 3px dashed black;
+    padding: 5vw;
+    width: 50vw;
+    height: 50vw;
+    margin: auto;
+    background-color: #D4D4D4;
+}
+
+.Task button {
+    margin-top: 5vh;
+}
+
+.Description {
+    flex: content;
+    flex-direction: row;
+}
+
+.Description span {
+    color: black;
+    font-size: 3vh;
+}
+
+.Description .strong {
+    color: red;
+    font-size: 3vh;
+}
+
+.Example {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.Feedback {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.Feedback .element span {
+    font-size: 5vh;
+}
+
+.Example .element {
+    margin-top: 10px;
+    padding: 2vh;
+    border: 2px dashed black;
+    height: 10vw;
+    width: 10vw;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #D4D4D4;
+}
+
+.Example .element span {
+    font-size: 5vh;
+    border-color: black;
+    align-self: center;
+}
