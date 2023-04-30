@@ -38,6 +38,7 @@
 }
 
 .Example {
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -45,6 +46,7 @@
 }
 
 .Feedback {
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -57,18 +59,18 @@
 
 .Example .element {
     margin-top: 10px;
-    padding: 2vh;
     border: 2px dashed black;
-    height: 10vw;
-    width: 10vw;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+    height: 15vh;
+    width: 15vh;
     background-color: #D4D4D4;
 }
 
-.Example .element span {
+.element p {
     font-size: 5vh;
-    border-color: black;
-    align-self: center;
+    vertical-align: middle;
+}
+
+.Hint {
+    font-size: 4vh;
+    color: grey
 }

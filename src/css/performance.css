@@ -1,0 +1,24 @@
+.performance-row {
+    display: contents;
+    flex-direction: column;
+}
+
+h3 {
+    text-decoration: underline;
+    margin-top: 5dvh;
+}
+
+th,
+td {
+    border: solid 1px;
+    /* 枠線指定 */
+}
+
+table {
+    border-collapse: collapse;
+    /* セルの線を重ねる */
+    width: 100%;
+    /* 幅指定 */
+    table-layout: fixed;
+    /* セルの幅計算指定 */
+}

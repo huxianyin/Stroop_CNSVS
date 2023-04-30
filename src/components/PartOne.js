@@ -6,14 +6,15 @@ const part = 1;
 
 function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
   const [started, setStarted] = useState(false);
-  const [trial, setTrial] = useState(0);
-  const [responded, setResponded] = useState(false);
-  const [retention, setRentention] = useState(false);
+  const [trial, setTrial] = useState(-1);
   const [trialStartTime, setTrialStartTime] = useState(0);
+
   const [stimuli, setStimuli] = useState(null);
   const [stimuliArray, setStimuliArray] = useState([]);
+
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-  const [data, setData] = useState(null);
+  const [rt, setRT] = useState(-1);
+  const [responded, setResponded] = useState(false);
 
   const GenerateStimuliArray = ()=>{
     var array = [];
@@ -29,17 +30,18 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
   const PresentStimuli = async()=>{
     var cnt = 0;
     while(cnt < settings.trials){
+      //set start trail state variable
       setTrialStartTime(Date.now());
-      setTrial(cnt);
+      setRT(-1);
       setResponded(false);
-      setData(null);
-      setRentention(false);
-
+      //present stimuli
       setStimuli(stimuliArray[cnt]);
       await sleep(settings.interval);
-
-      setRentention(true);
+      //update record data
+      setTrial(cnt);
       await sleep(100);
+
+      //rentention interval
       setStimuli(settings.dummy);
       await sleep(settings.retention_interval);
 
@@ -51,38 +53,27 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
   }
 
   const onResponse = ()=>{
+    if(!responded){
     const now = Date.now();
     const rt = now - trialStartTime;
-    const data = {"part":part,"trial":trial,"timestamp":now,
-    "s_name":stimuli["name"],"s_color": "黒",
-    "target":stimuli.name!="+",
-    "rt":rt, 
-    "correct": stimuli.name!="+"};
-    setData(data);
+    setRT(rt);
     setResponded(true);
+    }
   }
 
    useEffect(() => {
         GenerateStimuliArray();
     }, [])
 
-  useEffect(() => {
-    if(retention && !responded && stimuli){
-      setData({
-        "part":part,"trial":trial,"timestamp":Date.now(),
-        "s_name":stimuli["name"],"s_color": "黒",
-        "target":true,
-        "rt":null, 
-        "correct": false,
-      });
-    }
-  },[retention])
-
   useEffect(()=>{
-    if(data){
-      UpdateResponseData(data);
+    if(trial >=0 ){
+      const data = {"part":part, "trail":trial, "timestamp":Date.now(), 
+      "s_name":stimuli.name, "s_color":"黒",
+      "rt":rt,"target":true,"correct":true}
+      //console.log(data);
+      UpdateResponseData(data)
     }
-  },[data])
+  },[trial])
 
 
   const onStart = ()=>{
@@ -98,16 +89,16 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
             <div className="Description">
                 <span>文字が</span>
                 <span className="strong">現れる</span>
-                <span>時、</span>
+                <span>時、<br></br></span>
               <span>ボタンを押す</span>
             </div>
             <div className='Example'>
-              <div className='element'><span style={{color:"black"}}>赤</span></div>
-              <div className='element'><span style={{color:"black"}}>+</span></div>
+              <div className='element'><p>赤</p></div>
+              <div className='element'><p>+</p></div>
             </div>
             <div className='Feedback'>
-              <div className='element'><span>✔️</span></div>
-              <div className='element'><span>✖️</span></div>
+              <div className='element'><p>✔️</p></div>
+              <div className='element'><p>✖️</p></div>
             </div>
             <button className="btn-push" onClick={onStart}>開始</button>
            </div>:

@@ -14,9 +14,9 @@ const colors=[
   {"name":"緑","color":"#03af7a"},
 ]
 const settings = {
-  "interval" : 1000,
-  "retention_interval":500,
-  "trials":2,
+  "interval" : 2000,
+  "retention_interval":1000,
+  "trials":10,
   "dummy":{"name":"+","color":"black"},
   "color-name-dict":{"#ff4b00":"赤", "#005aff":"青", "#fff100":"黄", "#03af7a":"緑"}
 }
@@ -56,7 +56,6 @@ function App() {
       </PartOne>);
     }
     else if(partOneFinished && !partTwoFinished){
-      console.log(responseData);
       return (<PartTwo colors={colors} settings={settings} 
       onFinished={()=>setPartTwoFinished(true)} 
       shuffle={shuffle}
@@ -71,7 +70,7 @@ function App() {
       </PartThree>);
     }
     else{
-      return (<FinishPage data={responseData}></FinishPage>);
+      return (<FinishPage settings={settings} data={responseData} ></FinishPage>);
     }
   }
 
