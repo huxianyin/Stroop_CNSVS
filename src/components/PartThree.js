@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react';
 import '../css/Part.css';
 import '../css/btn.css'
 
-function PartThree({colors,settings,onFinished,shuffle}) {
+function PartThree({colors,settings,onFinished,shuffle,UpdateResponseData}) {
   const [started, setStarted] = useState(false);
   const [stimuli, setStimuli] = useState(colors[3]);
   const [stimuliArray, setStimuliArray] = useState([]);

@@ -24,6 +24,11 @@ function App() {
   const [partOneFinished, setPartOneFinished] = useState(false);
   const [partTwoFinished, setPartTwoFinished] = useState(false);
   const [partThreeFinished, setPartThreeFinished] = useState(false);
+  const [responseData, setResponseDate] = useState([]);
+
+  const UpdateResponseData = (data)=>{
+    setResponseDate([...responseData, data]);
+  }
 
   const shuffle = (array)=> {
     let currentIndex = array.length,  randomIndex;
@@ -43,15 +48,24 @@ function App() {
 
   const render=()=>{
     if(!partOneFinished){
-      return (<PartOne colors={colors} settings={settings} onFinished={()=>setPartOneFinished(true)} shuffle={shuffle}>
+      return (<PartOne colors={colors} settings={settings} 
+      onFinished={()=>setPartOneFinished(true)} 
+      shuffle={shuffle}
+      onUpdate={UpdateResponseData}>
       </PartOne>);
     }
     else if(partOneFinished && !partTwoFinished){
-      return (<PartTwo colors={colors} settings={settings} onFinished={()=>setPartTwoFinished(true)} shuffle={shuffle}>
+      return (<PartTwo colors={colors} settings={settings} 
+      onFinished={()=>setPartTwoFinished(true)} 
+      shuffle={shuffle}
+      onUpdate={UpdateResponseData}>
       </PartTwo>);
     }
     else if(partOneFinished && partTwoFinished && !partThreeFinished){
-      return (<PartThree colors={colors} settings={settings} onFinished={()=>setPartThreeFinished(true)} shuffle={shuffle}>
+      return (<PartThree colors={colors} settings={settings} 
+      onFinished={()=>setPartThreeFinished(true)} 
+      shuffle={shuffle}
+      onUpdate={UpdateResponseData}>
       </PartThree>);
     }
     else{
