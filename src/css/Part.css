@@ -3,23 +3,31 @@
     border-color: black;
     font-size: 5vh;
     color: black;
-    margin-top: 2vh;
     align-self: flex-end;
-    margin-top: 10vh;
 }
 
 .Task .Stimuli {
-    font-size: 20vh;
     border: 3px dashed black;
     padding: 5vw;
     width: 50vw;
     height: 50vw;
     margin: auto;
     background-color: #D4D4D4;
+    display: table;
+}
+
+.Task .Stimuli p {
+    font-size: 20vh;
+    line-height: 50vw;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 .Task button {
-    margin-top: 5vh;
+    padding: 5vw;
+    width: 50vw;
+    margin-top: 10vh;
 }
 
 .Description {
@@ -29,12 +37,11 @@
 
 .Description span {
     color: black;
-    font-size: 3vh;
+    font-size: 4vh;
 }
 
 .Description .strong {
     color: red;
-    font-size: 3vh;
 }
 
 .Example {
@@ -60,14 +67,17 @@
 .Example .element {
     margin-top: 10px;
     border: 2px dashed black;
-    height: 15vh;
-    width: 15vh;
+    height: 30vw;
+    width: 30vw;
     background-color: #D4D4D4;
+    display: table;
 }
 
 .element p {
-    font-size: 5vh;
+    text-align: center;
     vertical-align: middle;
+    display: table-cell;
+    font-size: 8vh;
 }
 
 .Hint {

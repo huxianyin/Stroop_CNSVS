@@ -3,9 +3,14 @@
     flex-direction: column;
 }
 
+h2 {
+    font-size: 8vh;
+}
+
 h3 {
+    font-size: 4vh;
     text-decoration: underline;
-    margin-top: 5dvh;
+    margin-top: 5vh;
 }
 
 th,

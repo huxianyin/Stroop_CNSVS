@@ -119,10 +119,9 @@ function PartThree({colors,settings,onFinished,shuffle,UpdateResponseData}) {
            </div>:
            <div className='Task'>
             <p className='Hint'>ヒント：一致しない</p>
-            <p className='Stimuli' 
-            style={{"color":stimuli["color"]}}>
-              {stimuli["name"]}
-            </p>
+            <div className='Stimuli'>
+              <p style={{"color":stimuli["color"]}}>{stimuli["name"]}</p>
+            </div>
             <button className='btn-push' onClick={onResponse}>ボタン</button>
            </div>
            }

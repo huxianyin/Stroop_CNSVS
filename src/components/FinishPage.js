@@ -88,7 +88,7 @@ function FinishPage(props) {
   },[])
     return (
       <div>
-        <h1>終了🎉</h1>
+        <h2>終了🎉</h2>
         <div className="Performance">
           <h3>今回の成績：</h3>
           <table>
@@ -111,7 +111,7 @@ function FinishPage(props) {
                 <th>2</th>
                 <th>{metrics["complex_rt_2"]?metrics["complex_rt_2"].toFixed(2):"反応なし"}</th>
                 <th>{metrics["err_ignore_2"]?metrics["err_ignore_2"].toFixed(2):"0"}</th>
-                <th>{metrics["err_res_2"]?metrics["err_res_2"].toFixed(2):""}</th>
+                <th>{metrics["err_res_2"]?metrics["err_res_2"].toFixed(2):"0"}</th>
               </tr>
 
               <tr>

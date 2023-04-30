@@ -103,10 +103,9 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
             <button className="btn-push" onClick={onStart}>開始</button>
            </div>:
            <div className='Task'>
-            <p className='Stimuli' 
-            style={{"color":"black"}}>
-              {stimuli["name"]}
-            </p>
+            <div className='Stimuli'>
+              <p >{stimuli["name"]}</p>
+            </div>
             <button className='btn-push' onClick={onResponse}>ボタン</button>
             
            
