@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import '../css/performance.css';
+import { useLocation } from "react-router-dom";
 
 const metrics_jp_dict = {
   "simple_rt":"単純反応時間",
@@ -13,7 +14,9 @@ const metrics_jp_dict = {
 
 function FinishPage(props) {
   const [metrics, setMetrics] = useState({});
+  const userID = useLocation()["search"].split('=')[1];
 
+  console.log(userID);
 
   const calc_part1_metrics=(data)=>{
     var simple_rt = 0;
@@ -87,8 +90,7 @@ function FinishPage(props) {
   }
 
   useEffect(()=>{
-    console.log(metrics);
-    console.log(props.data);
+    console.log("upload!!!\nuser=",userID, "\ndata:",props.data, "\nmetrics",metrics);
   }
   ,[metrics])
 

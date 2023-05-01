@@ -5,7 +5,7 @@ import PartTwo from './components/PartTwo';
 import PartThree from './components/PartThree';
 import FinishPage from './components/FinishPage';
 import { useState } from 'react';
-
+import {BrowserRouter} from 'react-router-dom'
 
 const colors=[
   {"name":"赤","color":"#ff4b00"},
@@ -14,9 +14,9 @@ const colors=[
   {"name":"緑","color":"#03af7a"},
 ]
 const settings = {
-  "interval" : 2000,
-  "retention_interval":1000,
-  "trials":28,
+  "interval" : 300,
+  "retention_interval":100,
+  "trials":4,
   "dummy":{"name":" ","color":"white"},
   "color-name-dict":{"#ff4b00":"赤", "#005aff":"青", "#fff100":"黄", "#03af7a":"緑"}
 }
@@ -74,12 +74,15 @@ function App() {
     }
   }
 
+
   return (
-    <div className="App">
-     <div className='body'>
-       {render()}
-     </div>
-    </div>
+    <BrowserRouter>
+     <div className="App">
+        <div className='body'>
+          {render()}
+        </div>
+      </div>
+      </BrowserRouter>
   );
 }
 
