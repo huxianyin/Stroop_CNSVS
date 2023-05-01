@@ -87,6 +87,12 @@ function FinishPage(props) {
   }
 
   useEffect(()=>{
+    console.log(metrics);
+    console.log(props.data);
+  }
+  ,[metrics])
+
+  useEffect(()=>{
     calc_scores();
   },[])
     return (

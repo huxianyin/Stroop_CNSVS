@@ -94,11 +94,11 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
             </div>
             <div className='Example'>
               <div className='element'><p>赤</p></div>
-              <div className='element'><p>+</p></div>
+              {/* <div className='element'><p> </p></div> */}
             </div>
             <div className='Feedback'>
               <div className='element'><p>✔️</p></div>
-              <div className='element'><p>✖️</p></div>
+              {/* <div className='element'><p>✖️</p></div> */}
             </div>
             <button className="btn-push" onClick={onStart}>開始</button>
            </div>:

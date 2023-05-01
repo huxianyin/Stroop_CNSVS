@@ -112,32 +112,36 @@ function PartThree({colors,settings,onFinished,shuffle,UpdateResponseData}) {
     setStarted(true);
     PresentStimuli();
   }
+
+  const render_description = ()=>{
+   return ( <div className="Description">
+                <span>色と文字が</span>
+                <span className="strong">一致しない</span>
+                <span>時、<br></br></span>
+              <span>ボタンを押す</span>
+            </div>);
+  }
   
     return (
         <div className='body'>
           {!started?
           <div className='Instruction'>
             <h1>第三部分</h1>
-            <div className="Description">
-                <span>色と文字が</span>
-                <span className="strong">一致しない</span>
-                <span>時、<br></br></span>
-              <span>ボタンを押す</span>
-            </div>
+           {render_description()}
             <div className='Example'>
               <div className='element'><p style={{color:"blue"}}>赤</p></div>
               <div className='element'><p style={{color:"red"}}>赤</p></div>
-              <div className='element'><p style={{color:"black"}}>+</p></div>
+              {/* <div className='element'><p style={{color:"black"}}>+</p></div> */}
             </div>
             <div className='Feedback'>
               <div className='element'><p>✔️</p></div>
               <div className='element'><p>✖️</p></div>
-              <div className='element'><p>✖️</p></div>
+              {/* <div className='element'><p>✖️</p></div> */}
             </div>
             <button className="btn-push" onClick={onStart}>開始</button>
            </div>:
            <div className='Task'>
-            <p className='Hint'>ヒント：一致しない</p>
+            {render_description()}
             <div className='Stimuli'>
               <p style={{"color":stimuli["color"]}}>{stimuli["name"]}</p>
             </div>

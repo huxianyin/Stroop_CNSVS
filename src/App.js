@@ -17,7 +17,7 @@ const settings = {
   "interval" : 2000,
   "retention_interval":1000,
   "trials":10,
-  "dummy":{"name":"+","color":"black"},
+  "dummy":{"name":" ","color":"white"},
   "color-name-dict":{"#ff4b00":"赤", "#005aff":"青", "#fff100":"黄", "#03af7a":"緑"}
 }
 
