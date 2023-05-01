@@ -80,17 +80,21 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
     setStarted(true);
     PresentStimuli();
   }
+
+  const render_description = ()=> {
+    return (<div className="Description">
+    <span>文字が</span>
+    <span className="strong">表示されたら<br></br></span>
+  <span>すぐボタンを押す</span>
+  </div>);
+}
   
     return (
         <div>
           {!started?
           <div className='Instruction'>
             <h1>第一部分</h1>
-            <div className="Description">
-                <span>文字が</span>
-                <span className="strong">表示されたらすぐ<br></br></span>
-              <span>ボタンを押す</span>
-            </div>
+            {render_description()}
             <div className='Example'>
               <div className='element'><p>赤</p></div>
               {/* <div className='element'><p> </p></div> */}
@@ -102,6 +106,7 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
             <button className="btn-push" onClick={onStart}>開始</button>
            </div>:
            <div className='Task'>
+            {render_description()}
             <div className='Stimuli'>
               <p >{stimuli["name"]}</p>
             </div>
