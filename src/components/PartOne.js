@@ -88,8 +88,7 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
             <h1>第一部分</h1>
             <div className="Description">
                 <span>文字が</span>
-                <span className="strong">現れる</span>
-                <span>時、<br></br></span>
+                <span className="strong">表示されたらすぐ<br></br></span>
               <span>ボタンを押す</span>
             </div>
             <div className='Example'>
