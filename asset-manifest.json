@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Stroop_CNSVS/static/css/main.ea7f5e34.css",
-    "main.js": "/Stroop_CNSVS/static/js/main.daff4332.js",
+    "main.js": "/Stroop_CNSVS/static/js/main.62d3aeec.js",
     "static/js/787.4d3e617a.chunk.js": "/Stroop_CNSVS/static/js/787.4d3e617a.chunk.js",
     "static/media/logo.svg": "/Stroop_CNSVS/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Stroop_CNSVS/index.html",
     "main.ea7f5e34.css.map": "/Stroop_CNSVS/static/css/main.ea7f5e34.css.map",
-    "main.daff4332.js.map": "/Stroop_CNSVS/static/js/main.daff4332.js.map",
+    "main.62d3aeec.js.map": "/Stroop_CNSVS/static/js/main.62d3aeec.js.map",
     "787.4d3e617a.chunk.js.map": "/Stroop_CNSVS/static/js/787.4d3e617a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ea7f5e34.css",
-    "static/js/main.daff4332.js"
+    "static/js/main.62d3aeec.js"
   ]
 }
