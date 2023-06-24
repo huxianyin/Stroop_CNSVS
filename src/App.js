@@ -21,7 +21,7 @@ const settings = {
   "retention_interval":1000,
   "retention_interval_variation":500,
   "trials":4,
-  "dummy":{"name":" ","color":"white"},
+  "dummy":{"name":"黒","color":"#D4D4D4"},
   "color-name-dict":{"#ff4b00":"赤", "#005aff":"青", "#fff100":"黄", "#03af7a":"緑"}
 }
 
@@ -94,7 +94,7 @@ function App() {
   return (
     <BrowserRouter>
      <div className="App">
-      <header>
+     <header>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
         crossorigin="anonymous"></link>

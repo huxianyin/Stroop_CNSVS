@@ -138,14 +138,13 @@ function PartThree({colors,settings,onFinished,shuffle,GenerateInterval,UpdateRe
               <div className='element'><p>✖️</p></div>
               {/* <div className='element'><p>✖️</p></div> */}
             </div>
-            <button className="btn-push" onClick={onStart}>開始</button>
+            <button className="btn-push btn-bottom" onClick={onStart}>開始</button>
            </div>:
            <div className='Task'>
             {render_description()}
-            <div className='Stimuli'>
+            <div className='Stimuli btn-push' onClick={onResponse}>
               <p style={{"color":stimuli["color"]}}>{stimuli["name"]}</p>
             </div>
-            <button className='btn-push' onClick={onResponse}>ボタン</button>
            </div>
            }
 

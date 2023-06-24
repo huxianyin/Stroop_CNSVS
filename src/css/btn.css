@@ -121,3 +121,7 @@
       box-shadow: 0px 5px 0px #bc4809;
       text-shadow: 1px 1px 1px #bc4809;
   }
+  
+  .btn-bottom {
+      margin-top: 15vh;
+  }

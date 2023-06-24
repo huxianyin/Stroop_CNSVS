@@ -106,14 +106,14 @@ function PartOne({colors,settings,onFinished,shuffle,GenerateInterval,UpdateResp
               <div className='element'><p>✔️</p></div>
               {/* <div className='element'><p>✖️</p></div> */}
             </div>
-            <button className="btn-push" onClick={onStart}>開始</button>
+            <button className="btn-push btn-bottom" onClick={onStart}>開始</button>
            </div>:
            <div className='Task'>
             {render_description()}
-            <div className='Stimuli'>
-              <p >{stimuli["name"]}</p>
+            <div className='Stimuli btn-push' onClick={onResponse}>
+              <p style={{"color":stimuli["color"]==="#D4D4D4"?"#D4D4D4":"black"}}>{stimuli["name"]}</p>
             </div>
-            <button className='btn-push' onClick={onResponse}>ボタン</button>
+            {/* <button className='btn-push' onClick={onResponse}>ボタン</button> */}
             
            
            </div>

@@ -52,7 +52,7 @@ function PartTwo({colors,settings,onFinished,shuffle,GenerateInterval,UpdateResp
 
   const pick_another_color = (name)=>{
     let tmpset = [...colors];
-    tmpset = tmpset.filter(item => item.name!=name);
+    tmpset = tmpset.filter(item => item.name!==name);
     const rand = Math.floor(Math.random()*tmpset.length);
     //console.log(name,tmpset,rand,tmpset[rand].color);
     return tmpset[rand].color;
@@ -94,7 +94,7 @@ function PartTwo({colors,settings,onFinished,shuffle,GenerateInterval,UpdateResp
 
     useEffect(()=>{
       if(trial >=0 ){
-        const is_target = stimuli.name == settings["color-name-dict"][stimuli.color]; //一致
+        const is_target = stimuli.name === settings["color-name-dict"][stimuli.color]; //一致
         const data = {"part":part, "trail":trial, "timestamp":Date.now(), 
         "s_name":stimuli.name, "s_color": settings["color-name-dict"][stimuli.color],
         "rt":rt,"target":is_target,"correct":(is_target && rt>0) || (!is_target && rt<0)}
@@ -138,15 +138,14 @@ function PartTwo({colors,settings,onFinished,shuffle,GenerateInterval,UpdateResp
             </div>
 
 
-            <button className="btn-push" onClick={onStart}>開始</button>
+            <button className="btn-push btn-bottom" onClick={onStart}>開始</button>
            </div>:
            <div className='Task'>
             {/* <p className='Hint'>ヒント：一致</p> */}
             {render_description()}
-            <div className='Stimuli'>
+            <div className='Stimuli btn-push' onClick={onResponse}>
               <p style={{"color":stimuli["color"]}}>{stimuli["name"]}</p>
             </div>
-            <button className='btn-push' onClick={onResponse}>ボタン</button>
            </div>
            }
 
