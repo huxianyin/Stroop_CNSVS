@@ -4,7 +4,7 @@ import '../css/Part.css';
 import '../css/btn.css'
 const part = 1;
 
-function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
+function PartOne({colors,settings,onFinished,shuffle,GenerateInterval,UpdateResponseData}) {
   const [started, setStarted] = useState(false);
   const [trial, setTrial] = useState(-1);
   const [trialStartTime, setTrialStartTime] = useState(0);
@@ -27,13 +27,6 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
     setStimuliArray(array.slice(0,settings.trials));
   }
 
-  const GenerateInterval = (mean,variation) => {
-    const max = mean + variation;
-    const min = mean - variation;
-    const interval = Math.floor(Math.random() * (max - min + 1) + min);
-    return interval;
-  }
-
   const PresentStimuli = async()=>{
     var cnt = 0;
     while(cnt < settings.trials){
@@ -44,8 +37,7 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
       //present stimuli
       setStimuli(stimuliArray[cnt]);
       
-      const interval =GenerateInterval(settings.interval,settings.interval_variation);
-      console.log(interval); 
+      const interval = GenerateInterval(settings.interval,settings.interval_variation);
       await sleep(interval);
 
       //update record data

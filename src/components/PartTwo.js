@@ -4,7 +4,7 @@ import '../css/Part.css';
 import '../css/btn.css'
 const part = 2;
 
-function PartTwo({colors,settings,onFinished,shuffle,UpdateResponseData}) {
+function PartTwo({colors,settings,onFinished,shuffle,GenerateInterval,UpdateResponseData}) {
   const [started, setStarted] = useState(false);
   const [trial, setTrial] = useState(-1);
   const [trialStartTime, setTrialStartTime] = useState(0);
@@ -57,13 +57,6 @@ function PartTwo({colors,settings,onFinished,shuffle,UpdateResponseData}) {
     //console.log(name,tmpset,rand,tmpset[rand].color);
     return tmpset[rand].color;
     
-  }
-
-  const GenerateInterval = (mean,variation) => {
-    const max = mean + variation;
-    const min = mean - variation;
-    const interval = Math.floor(Math.random() * (max - min + 1) + min);
-    return interval;
   }
 
   const PresentStimuli = async()=>{

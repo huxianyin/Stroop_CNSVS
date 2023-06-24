@@ -14,9 +14,8 @@ const metrics_jp_dict = {
 
 function FinishPage(props) {
   const [metrics, setMetrics] = useState({});
-  const userID = useLocation()["search"].split('=')[1];
 
-  console.log(userID);
+  console.log(props.userInfo);
 
   const calc_part1_metrics=(data)=>{
     var simple_rt = 0;
@@ -90,7 +89,7 @@ function FinishPage(props) {
   }
 
   useEffect(()=>{
-    console.log("upload!!!\nuser=",userID, "\ndata:",props.data, "\nmetrics",metrics);
+    console.log("upload!!!\nuser=",props.userInfo, "\ndata:",props.data, "\nmetrics",metrics);
     //TODO upload to google cloud platform bucket
   }
   ,[metrics])
@@ -100,9 +99,9 @@ function FinishPage(props) {
   },[])
     return (
       <div>
-        <h2>終了🎉</h2>
+        <h2>🎉終了🎉</h2>
         <div className="Performance">
-          <h3>今回の成績：</h3>
+          <h3>{props.userInfo.name}の今回の成績：</h3>
           <table>
             <tbody>
               <tr>

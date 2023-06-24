@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Login from './components/Login';
 import PartOne from './components/PartOne';
 import PartTwo from './components/PartTwo';
 import PartThree from './components/PartThree';
@@ -25,10 +26,12 @@ const settings = {
 }
 
 function App() {
+  const [login, setLogin] = useState(false);
   const [partOneFinished, setPartOneFinished] = useState(false);
   const [partTwoFinished, setPartTwoFinished] = useState(false);
   const [partThreeFinished, setPartThreeFinished] = useState(false);
   const [responseData, setResponseDate] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
 
   const UpdateResponseData = (data)=>{
     setResponseDate([...responseData, data]);
@@ -48,13 +51,21 @@ function App() {
     }
     return array;
   }
-
+  const GenerateInterval= (mean,variation) =>{
+    const min = mean - variation;
+    const max = mean + variation;
+    return Math.floor(Math.random()*(max-min+1) + min);
+  }
 
   const render=()=>{
-    if(!partOneFinished){
+    if(!login){
+      return (<Login setUserInfo={setUserInfo} onStart={()=>{setLogin(true)}}></Login>)
+    }
+    else if(!partOneFinished){
       return (<PartOne colors={colors} settings={settings} 
       onFinished={()=>setPartOneFinished(true)} 
       shuffle={shuffle}
+      GenerateInterval={GenerateInterval}
       UpdateResponseData={UpdateResponseData}>
       </PartOne>);
     }
@@ -62,6 +73,7 @@ function App() {
       return (<PartTwo colors={colors} settings={settings} 
       onFinished={()=>setPartTwoFinished(true)} 
       shuffle={shuffle}
+      GenerateInterval={GenerateInterval}
       UpdateResponseData={UpdateResponseData}>
       </PartTwo>);
     }
@@ -69,11 +81,12 @@ function App() {
       return (<PartThree colors={colors} settings={settings} 
       onFinished={()=>setPartThreeFinished(true)} 
       shuffle={shuffle}
+      GenerateInterval={GenerateInterval}
       UpdateResponseData={UpdateResponseData}>
       </PartThree>);
     }
     else{
-      return (<FinishPage settings={settings} data={responseData} ></FinishPage>);
+      return (<FinishPage settings={settings} data={responseData} userInfo={userInfo}></FinishPage>);
     }
   }
 
@@ -81,6 +94,11 @@ function App() {
   return (
     <BrowserRouter>
      <div className="App">
+      <header>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
+        crossorigin="anonymous"></link>
+      </header>
         <div className='body'>
           {render()}
         </div>
