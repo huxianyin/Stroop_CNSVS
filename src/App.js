@@ -14,8 +14,11 @@ const colors=[
   {"name":"緑","color":"#03af7a"},
 ]
 const settings = {
-  "interval" : 300,
-  "retention_interval":100,
+  "interval" : 2000,
+  "interval_variation": 1000,
+
+  "retention_interval":1000,
+  "retention_interval_variation":500,
   "trials":4,
   "dummy":{"name":" ","color":"white"},
   "color-name-dict":{"#ff4b00":"赤", "#005aff":"青", "#fff100":"黄", "#03af7a":"緑"}

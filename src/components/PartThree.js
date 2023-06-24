@@ -60,6 +60,13 @@ function PartThree({colors,settings,onFinished,shuffle,UpdateResponseData}) {
     
   }
 
+  const GenerateInterval = (mean,variation) => {
+    const max = mean + variation;
+    const min = mean - variation;
+    const interval = Math.floor(Math.random() * (max - min + 1) + min);
+    return interval;
+  }
+
   const PresentStimuli = async()=>{
     var cnt = 0;
     while(cnt < settings.trials){
@@ -68,7 +75,7 @@ function PartThree({colors,settings,onFinished,shuffle,UpdateResponseData}) {
       setRT(-1);
       //present stimuli
       setStimuli(stimuliArray[cnt]);
-      await sleep(settings.interval);
+      await sleep(GenerateInterval(settings.interval,settings.interval_variation));
 
       //update record data
       setTrial(cnt);
@@ -76,7 +83,7 @@ function PartThree({colors,settings,onFinished,shuffle,UpdateResponseData}) {
 
       //rentention interval
       setStimuli(settings.dummy);
-      await sleep(settings.retention_interval);
+      await sleep(GenerateInterval(settings.retention_interval,settings.retention_interval_variation));
       cnt += 1;
     }
     setStarted(false);

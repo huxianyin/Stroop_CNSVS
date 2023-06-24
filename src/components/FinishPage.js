@@ -91,6 +91,7 @@ function FinishPage(props) {
 
   useEffect(()=>{
     console.log("upload!!!\nuser=",userID, "\ndata:",props.data, "\nmetrics",metrics);
+    //TODO upload to google cloud platform bucket
   }
   ,[metrics])
 

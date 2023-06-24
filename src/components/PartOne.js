@@ -27,6 +27,13 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
     setStimuliArray(array.slice(0,settings.trials));
   }
 
+  const GenerateInterval = (mean,variation) => {
+    const max = mean + variation;
+    const min = mean - variation;
+    const interval = Math.floor(Math.random() * (max - min + 1) + min);
+    return interval;
+  }
+
   const PresentStimuli = async()=>{
     var cnt = 0;
     while(cnt < settings.trials){
@@ -36,14 +43,18 @@ function PartOne({colors,settings,onFinished,shuffle,UpdateResponseData}) {
       setResponded(false);
       //present stimuli
       setStimuli(stimuliArray[cnt]);
-      await sleep(settings.interval);
+      
+      const interval =GenerateInterval(settings.interval,settings.interval_variation);
+      console.log(interval); 
+      await sleep(interval);
+
       //update record data
       setTrial(cnt);
       await sleep(100);
 
       //rentention interval
       setStimuli(settings.dummy);
-      await sleep(settings.retention_interval);
+      await sleep(GenerateInterval(settings.retention_interval,settings.retention_interval_variation));
 
       cnt+=1;
     }
